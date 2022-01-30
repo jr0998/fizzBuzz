@@ -55,142 +55,71 @@
             <div class="row row-cols-1 row-cols-lg-2 py-5 ">
                 <div class="col-lg-8">
                     <pre class="line-numbers"> <code class="language-javascript">
-                        <!doctype html>
-                        <html lang="en" class="h-100">
+                        function getValues() {
+                            let set = []
+                            let lBound = document.getElementById("lowerBound").value;
+                            let uBound = document.getElementById("upperBound").value;
                         
-                        <head>
-                            <title>Fizz Buzz: A Coding Project By Jacob Reynolds</title>
-                            <!-- Required meta tags -->
-                            <meta charset="utf-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                            lBound = parseInt(lBound);
+                            uBound = parseInt(uBound);
                         
-                            <!-- Bootstrap CSS -->
-                            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-                                integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-                            <link rel="stylesheet" href="/css/site.css">
-                            <link rel="icon" type="image/png" href="/img/favicon_io/favicon-32x32.png">
-                            <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
+                            if (Number.isInteger(lBound) && Number.isInteger(uBound)) {
+                                set = testValues(lBound, uBound);
+                                displayTable(set);
+                            } else {
+                                alert("Values entered not Integers");
+                            }
+                        }
                         
+                        function testValues(lB, uB) {
+                            let tblValue = [];
+                            for (let i = lB; i <= uB; i++) {
+                                tblValue.push(i);
+                            }
+                            return tblValue;
+                        }
                         
-                        
-                        </head>
-                        
-                        <body class="d-flex flex-column h-100">
-                            <!-- Nav Section -->
-                            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                                <div class="container-fluid">
-                                    <a class="navbar-brand" href="/index.html"> <img src="/img/favicon_io/favicon-32x32.png"
-                                            class="d-inline-block" alt="Logo" width="" height=""> Fizz Buzz</a>
-                                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="navbar-toggler-icon"></span>
-                                    </button>
-                                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="/index.html">Home</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link active" aria-current="page" href="/app.html">App</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="/code.html">Code</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" target="_blank" href="https://github.com/jr0998/fizzBuzz">Git
-                                                    Repo</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" target="_blank" href="https://jacobr-portfolio.netlify.app/">About</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </nav>
-                        
-                            <main class="flex-shrink-0">
-                                <div class="container mt-5">
-                                    <div class="row row-cols-1 row-cols-lg-2">
-                                        <div class="col col-lg-4 border-bottom border-lg-end  border-2 border-dark">
-                                            <h4>Fizz Buzz</h4>
-                                            <p>When it counts you Fizz Buzz. This is a javascript coding exercise
-                                                using loops that prints numbers between two bounds. Between these two bounds it prints
-                                                fizz for multiples of 3 and buzz for multiples of 5.</p>
-                                            <h4>Instuctions</h4>
-                                            <p>Enter two values and press the button and the results will be printed below</p>
-                        
-                                        </div>
-                                        <div class="col col-lg-8 gy-2">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div>
-                                                        <h5>Enter Values</h5>
-                                                        <form class="row gy-2 gx-3">
-                                                            <div class="col">
-                                                                <input id="lowerBound" type="number" class="form-control"
-                                                                    placeholder="Start Value" value="1" aria-label="Start Value">
-                                                            </div>
-                                                            <div class="col">
-                                                                <input id="upperBound" type="number" class="form-control"
-                                                                    placeholder="End Value" value="100" aria-label="End Value">
-                                                            </div>
-                                                            <div class="col-12 d-flex justify-content-end">
-                                                                <button id="btnSubmit" type="button" class="btn btn-dark">Results</button>
-                                                            </div>
-                                                        </form>
-                                                        <h4 class="mt-5 border-bottom border-2">Results</h4>
-                                                        <div class="table-responsive">
-                                                            <table class="table table-striped table-sm">
-                                                                <tbody id="results">
-                                                                    <!-- Results Go Here -->
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </main>
-                            <footer class="footer mt-auto py-3 sticky-footer">
-                                <div class="container-fluid">
-                                    <div class="row row-cols-1 row-cols-lg-3 gy-2">
-                                        <div class="col order-last order-lg-first text-light">
-                                            <div>
-                                                <span class="text-muted">&copy;2022&nbsp;</span>Jacob Reynolds &nbsp;|&nbsp;
-                                                jakereynolds@comcast.net
-                                            </div>
-                                        </div>
-                                        <div class="col d-flex align-items-center justify-content-start justify-content-lg-center">
-                                            <img src="/img/SHARELOCK (5).svg" alt="Jacob Reynolds Logo" height="26">
-                                        </div>
-                                        <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
-                                            <div class="row">
-                                                <div class="col social"><a href="#"><i class="fab fa-linkedin fa-2x"></i></a></div>
-                                                <div class="col social"><a href="#"><i class="fab fa-github fa-2x"></i></a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </footer>
-                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-                                integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
-                            </script>
-                            <script src="/js/site.js"></script>
-                            <script>
-                                document.getElementById("btnSubmit").addEventListener("click", getValues);
-                            </script>
-                        </body>
-                        
-                        </html>
+                        function displayTable(tblVal) {
+                            let template = `<tr>`;
+                            for (let i = 0; i < tblVal.length; i++) {
+                                if(tblVal[i] % 3 == 0 && tblVal[i] % 5 == 0 ){
+                                    template+= `<td><strong>FizzBuzz</strong></td></tr><tr>`;
+                                }
+                                else if(tblVal[i] % 5 == 0){
+                                    template+= `<td><strong>Buzz</strong></td></tr><tr>`;
+                                }
+                                else if(tblVal[i] % 3 == 0){
+                                    template+= `<td><strong>Fizz</strong></td>`;
+                                }
+                                else{
+                                template+= `<td>${tblVal[i]}</td>`;            
+                                }
+                            }
+                            document.getElementById("results").innerHTML = template;
+                        }
                     </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <br>
+                    <h5>getValues()</h5>
+                    <p>getValues is the main function that is called when the button is pressed.
+                        First it gets the upper and lower bounds from the input sections of the html document. 
+                        Then it validates that the input is an integer and calls the test and display functions.
+                    </p>
+                    <br><br><br><br><br><br><br><br>
+                    <h5>testValues()</h5>
+                    <p>testValues populates an array with the numbers between the two bounds
+                        that are passed as the parameters and then returns that array.
+                    </p>
+                    <br><br><br>
+                    <h5>displayTable()</h5>
+                    <p>displayTable takes in an array as a parameter. Then loops through the array, seeing if 
+                        the value is a multiple of 3 which it would set to fizz or a multiple of 5 which would be set to 5 
+                        and if they are a multiple of both it would be set to FizzBuzz. If it does not meet these conditions
+                        then just the value is passed on to the string. The string is then passed back to the html document 
+                        in a table.
+                    </p>
                 </div>
             </div>
         </div>
