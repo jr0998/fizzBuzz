@@ -53,8 +53,47 @@
 
     <main class="flex-shrink-0">
         <div class="container">
+            <div class="row mt-5">
+                <div class="col-4 border-end border-2 border-dark">
+                    <h4>Fizz Buzz</h4>
+                    <p>When it counts you Fizz Buzz. This is a javascript coding exercise
+                        using loops that prints numbers between two bounds. Between these two bounds it prints
+                        fizz for multiples of 3 and buzz for multiples of 5.</p>
+                    <h4>Instuctions</h4>
+                    <p>Enter two values and press the button and the results will be printed below</p>
 
-        </div>
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col">
+                            <div>
+                                <h5>Enter Values</h5>
+                                <form class="row gy-2 gx-3">
+                                    <div class="col">
+                                        <input id="lowerBound" type="number" class="form-control"
+                                            placeholder="Start Value" value="0" aria-label="Start Value">
+                                    </div>
+                                    <div class="col">
+                                        <input id="upperBound" type="number" class="form-control" placeholder="End Value"
+                                            value="100" aria-label="End Value">
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button id="btnSubmit" type="button"
+                                            class="btn btn-dark">Results</button>
+                                    </div>
+                                </form>
+                                <h4 class="mt-5 border-bottom border-2">Results</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-sm">
+                                        <tbody id="results">
+                                            <!-- Results Go Here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     </main>
     <footer class="footer mt-auto py-3 sticky-footer">
         <div class="container-fluid">
